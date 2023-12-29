@@ -27,23 +27,17 @@ class Shoes extends StatelessWidget {
           ),
           Positioned(
             top: MediaQuery.of(context).size.height*0.12,
-            left: MediaQuery.of(context).size.width*0.25,
+            left: MediaQuery.of(context).size.width*0.3,
             child: Text(
               'Make \nYour Style \nCome \nTrue Here',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 45,
+                fontSize: 50,
                 fontWeight: FontWeight.w600,
               ),
             ),
           ),
-          Positioned(
-            top: MediaQuery.of(context).size.height*0.45,
-            child: Image.network(
-              'https://i.ibb.co/yFcXHVq/shoes.png',
-              width:MediaQuery.of(context).size.width,
-            ),
-          ),
+
           Positioned(
             bottom: 0,
             child: RotatedBox(
@@ -57,6 +51,20 @@ class Shoes extends StatelessWidget {
                   letterSpacing: 80,
                 ),
               ),
+            ),
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width*0.27,
+            color: Colors.white12,
+          ),
+
+          Positioned(
+            top: MediaQuery.of(context).size.height*0.48,
+            right: 0,
+            child: Image.network(
+              'https://i.ibb.co/yFcXHVq/shoes.png',
+              width:MediaQuery.of(context).size.width*0.9,
             ),
           ),
         ],
