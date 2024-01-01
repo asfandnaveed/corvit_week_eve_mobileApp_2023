@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class Shoes extends StatelessWidget {
@@ -30,7 +31,7 @@ class Shoes extends StatelessWidget {
             left: MediaQuery.of(context).size.width*0.3,
             child: Text(
               'Make \nYour Style \nCome \nTrue Here',
-              style: TextStyle(
+              style: GoogleFonts.poppins(
                 color: Colors.white,
                 fontSize: 50,
                 fontWeight: FontWeight.w600,
@@ -44,7 +45,7 @@ class Shoes extends StatelessWidget {
               quarterTurns: -1,
               child: Text(
                 'FASHION',
-                style: TextStyle(
+                style: GoogleFonts.poppins(
                   fontSize: 90,
                   color: Colors.white24,
                   fontWeight: FontWeight.w600,
@@ -62,8 +63,8 @@ class Shoes extends StatelessWidget {
           Positioned(
             top: MediaQuery.of(context).size.height*0.48,
             right: 0,
-            child: Image.network(
-              'https://i.ibb.co/yFcXHVq/shoes.png',
+            child: Image.asset(
+              'assets/images/burger.png',
               width:MediaQuery.of(context).size.width*0.9,
             ),
           ),
