@@ -1,5 +1,7 @@
+import 'package:corvit_week_eve/main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:typewritertext/typewritertext.dart';
 
 
 class Shoes extends StatelessWidget {
@@ -29,12 +31,16 @@ class Shoes extends StatelessWidget {
           Positioned(
             top: MediaQuery.of(context).size.height*0.12,
             left: MediaQuery.of(context).size.width*0.3,
-            child: Text(
-              'Make \nYour Style \nCome \nTrue Here',
-              style: GoogleFonts.poppins(
-                color: Colors.white,
-                fontSize: 50,
-                fontWeight: FontWeight.w600,
+            child: TypeWriterText(
+              repeat: true,
+              duration: Duration(milliseconds: 100),
+              text: Text(
+                'Make \nYour Style \nCome \nTrue Here',
+                style: GoogleFonts.poppins(
+                  color: Colors.white,
+                  fontSize: 50,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
           ),
@@ -64,9 +70,33 @@ class Shoes extends StatelessWidget {
             top: MediaQuery.of(context).size.height*0.48,
             right: 0,
             child: Image.asset(
-              'assets/images/burger.png',
+              'assets/images/shoes.png',
               width:MediaQuery.of(context).size.width*0.9,
             ),
+          ),
+          Positioned(
+              right: 30,
+              bottom: 50,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xff2d4283),
+                ),
+                onPressed: (){
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context)=>MyApp() )
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+                  child: Text(
+                    'Next',
+                    style: GoogleFonts.poppins(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ),
           ),
         ],
       ),

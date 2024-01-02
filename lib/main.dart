@@ -1,11 +1,40 @@
+import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 import 'package:corvit_week_eve/shoes.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MaterialApp(
-    home: Shoes(),
+    home: SplashScreen(),
   ));
 }
+
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: FlutterSplashScreen.fadeIn(
+        duration: Duration(seconds: 4),
+        backgroundColor: Colors.white,
+        onInit: () {
+          debugPrint("On Init");
+        },
+        onEnd: () {
+          debugPrint("On End");
+        },
+        childWidget: SizedBox(
+          height: 200,
+          width: 200,
+          child: Image.asset("assets/images/burger.png"),
+        ),
+        onAnimationEnd: () => debugPrint("On Fade In End"),
+        nextScreen: const Shoes(),
+      ),
+    );
+  }
+}
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
