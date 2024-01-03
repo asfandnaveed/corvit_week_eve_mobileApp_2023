@@ -1,4 +1,5 @@
 import 'package:corvit_week_eve/main.dart';
+import 'package:corvit_week_eve/search.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:typewritertext/typewritertext.dart';
@@ -83,7 +84,7 @@ class Shoes extends StatelessWidget {
                 ),
                 onPressed: (){
                   Navigator.push(context,
-                    MaterialPageRoute(builder: (context)=>MyApp() )
+                    MaterialPageRoute(builder: (context)=>Search() )
                   );
                 },
                 child: Padding(
