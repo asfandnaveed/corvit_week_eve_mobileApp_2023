@@ -1,3 +1,4 @@
+import 'package:corvit_week_eve/foodscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -180,108 +181,36 @@ class Search extends StatelessWidget {
                     ],
                   ),
                 ),
-                Card(
-                  elevation: 6,
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Image.asset(
-                            'assets/images/finance_product.jpg',
-                            width: 200,
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xff316ec6),
+                      ),
+                        onPressed: (){
+                        Navigator.push(context,
+                          MaterialPageRoute(builder: (context)=> FoodScreen())
+                        );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15.0,vertical: 10),
+                          child: Text(
+                            'Next',
+                            style: GoogleFonts.poppins(
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),
                           ),
                         ),
-                      )
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                Card(
-                  elevation: 6,
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Image.asset(
-                            'assets/images/finance_product.jpg',
-                            width: 200,
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Card(
-                  elevation: 6,
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Image.asset(
-                            'assets/images/finance_product.jpg',
-                            width: 200,
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Card(
-                  elevation: 6,
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Image.asset(
-                            'assets/images/finance_product.jpg',
-                            width: 200,
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Card(
-                  elevation: 6,
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Image.asset(
-                            'assets/images/finance_product.jpg',
-                            width: 200,
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Card(
-                  elevation: 6,
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Image.asset(
-                            'assets/images/finance_product.jpg',
-                            width: 200,
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+
+
 
               ],
             ),
