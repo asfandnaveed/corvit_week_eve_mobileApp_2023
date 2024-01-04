@@ -14,6 +14,7 @@ class FoodScreen extends StatelessWidget {
           child: Column(
             children: [
               Row(
+
                 children: [
                   Container(
                     height: 55,
@@ -49,8 +50,36 @@ class FoodScreen extends StatelessWidget {
                       ),
                     ],
                   ),
+                  Spacer(),
+                  Stack(
+                    children: [
+                      Icon(
+                        Icons.notification_important_outlined,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      Positioned(
+                        right: 0,
+                        child: CircleAvatar(
+                          backgroundColor: Colors.red,
+                          radius: 8,
+                          child: Text(
+                            '1',
+                            style: GoogleFonts.acme(
+                              fontSize: 11,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
+              SizedBox(
+                height: 30,
+              ),
+              TextFormField(),
             ],
           ),
         ),
