@@ -17,3 +17,8 @@ ______________________________________________
 ______________________________________________
 
  Design 4 : https://dribbble.com/shots/23286035-Food-App
+
+______________________________________________
+
+ Instal firebase tools : 
+npm install -g firebase-tools
