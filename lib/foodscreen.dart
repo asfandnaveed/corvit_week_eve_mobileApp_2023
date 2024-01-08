@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class FoodScreen extends StatelessWidget {
-  const FoodScreen({super.key});
+class FoodScreen extends StatefulWidget {
+   FoodScreen({super.key});
+
+  @override
+  State<FoodScreen> createState() => _FoodScreenState();
+}
+
+class _FoodScreenState extends State<FoodScreen> {
+  int x = 0;
+
+  double y = 0.2;
+
+  String z = 'Hello';
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +90,76 @@ class FoodScreen extends StatelessWidget {
               SizedBox(
                 height: 30,
               ),
-              TextFormField(),
+              Container(
+                decoration: BoxDecoration(
+                  color: Color(0xff2f3747),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    hintText: 'What do you want to eat?',
+                    hintStyle: GoogleFonts.poppins(
+                      color: Colors.white,
+                    ),
+                    prefixIcon: Icon(
+                        Icons.search,
+                      color: Colors.white,
+                    ),
+                    border: InputBorder.none
+                  ),
+                ),
+              ),
+
+              Row(
+                children: [
+                  ElevatedButton(
+                      onPressed: (){
+                        if(x>0){
+                          x--;
+                          setState(() {
+
+                          });
+                        }
+                      },
+                      child: Text(
+                        '-',
+                        style: GoogleFonts.podkova(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20,
+                        ),
+                      ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    '${x}',
+                    style: GoogleFonts.podkova(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 25,
+                      color: Colors.white,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      x++;
+                      setState(() {
+
+                      });
+                    },
+                    child: Text(
+                      '+',
+                      style: GoogleFonts.podkova(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
