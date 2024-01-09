@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -9,6 +10,10 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,20 +24,38 @@ class _RegisterScreenState extends State<RegisterScreen> {
             children: [
               Image.asset(
                 'assets/images/Corvit Logo.png',
+                width: 200,
               ),
               SizedBox(
                 height: 30,
               ),
-              TextFormField(),
+              TextFormField(
+                controller: email,
+              ),
               SizedBox(
                 height: 20,
               ),
-              TextFormField(),
+              TextFormField(
+                obscureText: true,
+                controller: password,
+              ),
               SizedBox(
                 height: 20,
               ),
               ElevatedButton(
-                  onPressed: (){},
+                  onPressed: (){
+
+                    debugPrint('${email.text}');
+                    debugPrint('${password.text}');
+
+                    final auth = FirebaseAuth.instance;
+
+                    auth.createUserWithEmailAndPassword(
+                        email: email.text,
+                        password: password.text
+                    );
+
+                  },
                   child: Text(
                     'Sign Up',
                     style: GoogleFonts.poppins(
