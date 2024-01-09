@@ -1,3 +1,4 @@
+import 'package:corvit_week_eve/RegisterScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -159,6 +160,14 @@ class _FoodScreenState extends State<FoodScreen> {
                     ),
                   ),
                 ],
+              ),
+              ElevatedButton(
+                  onPressed: (){
+                    Navigator.push(context,
+                      MaterialPageRoute(builder: (context)=> RegisterScreen())
+                    );
+                  },
+                  child: Text('Next'),
               ),
             ],
           ),

@@ -1,8 +1,14 @@
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
+import 'package:corvit_week_eve/firebase_options.dart';
 import 'package:corvit_week_eve/shoes.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MaterialApp(
     home: SplashScreen(),
   ));

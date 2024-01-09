@@ -38,6 +38,8 @@ dependencies:
   google_fonts: ^6.1.0
   another_flutter_splash_screen: ^1.2.0
   typewritertext: ^2.3.1
+  firebase_core: ^2.24.2
+  firebase_auth: ^4.16.0
 
 dev_dependencies:
   flutter_test:
