@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -62,6 +63,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                     ),
                   ),
+              ),
+
+              ElevatedButton(
+                  onPressed: (){
+                    final db = FirebaseDatabase.instance.ref();
+
+                    db.child('Students').child('Ahmed').set({
+                      "rollNumber":"LH_SH_523",
+                      "Address":"Kalma Chonck",
+                      "id":"3",
+                      "FatherName":"Hammad",
+                    });
+                  },
+                  child: Text('CREATE DATA !')
               ),
             ],
           ),
