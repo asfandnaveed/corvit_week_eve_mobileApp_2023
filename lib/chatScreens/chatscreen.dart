@@ -68,6 +68,11 @@ class _ChatScreenState extends State<ChatScreen> {
                     ],
                   ),
 
+                  ChatBubble(),
+                  ChatBubble(),
+
+
+
 
 
                 ],
@@ -76,6 +81,42 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class ChatBubble extends StatelessWidget {
+  const ChatBubble({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(height: 20,),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Flexible(
+              child: Container(
+
+                padding: EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Color(0xfff0f2f3),
+                  borderRadius: BorderRadius.circular(12)
+                ),
+                child: Text(
+                  'Good Morning,',
+                  style: GoogleFonts.poppins(
+                    fontSize: 15,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
