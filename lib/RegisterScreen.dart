@@ -1,3 +1,4 @@
+import 'package:corvit_week_eve/chatScreens/chatscreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+
+  bool check = false;
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +80,32 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     });
                   },
                   child: Text('CREATE DATA !')
+              ),
+              SizedBox(height: 20,),
+              ElevatedButton(
+                  onPressed: (){
+                    check==false? check=true : check=false;
+                   setState(() {
+
+                   });
+
+                  },
+                  child: Text('Change Color'),
+              ),
+              Text(
+                'Hello Corvit',
+                style: GoogleFonts.poppins(
+                  color: check==false?Colors.green:Colors.red,
+                ),
+              ),
+
+              ElevatedButton(
+                  onPressed: (){
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context)=> ChatScreen())
+                    );
+                  },
+                  child: Text('Next Screen ')
               ),
             ],
           ),
