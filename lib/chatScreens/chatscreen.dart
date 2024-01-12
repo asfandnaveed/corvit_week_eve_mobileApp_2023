@@ -40,6 +40,24 @@ class _ChatScreenState extends State<ChatScreen> {
                     sender: true,
                   ),
 
+                  InkWell(
+                    onTap: (){
+                      
+                    },
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: Colors.green.shade400,
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: Icon(
+                        Icons.send,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+
 
                 ],
               ),
