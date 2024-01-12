@@ -13,6 +13,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -21,58 +22,23 @@ class _ChatScreenState extends State<ChatScreen> {
               width: MediaQuery.of(context).size.width,
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Flexible(
-                        child: Container(
-                          padding: const EdgeInsets.all(15.0),
-                          decoration: BoxDecoration(
-                            color: Color(0xfff0f2f3),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Text(
-                            'Good Morning, Do you need prescription for asthma medicine ?',
-                            style: GoogleFonts.poppins(
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+
+                  ChatBubble(
+                    message: 'Hello Corvit',
+                    sender: true,
                   ),
-                  SizedBox(
-                    height: 20,
+                  ChatBubble(
+                    message: 'How are you ?',
+                    sender: false,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Flexible(
-                        child: Container(
-                          padding: const EdgeInsets.all(15.0),
-                          decoration: BoxDecoration(
-                            color: Color(0xfff3375d4),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Text(
-                            'Morning, Thanks.',
-                            textAlign: TextAlign.end,
-                            style: GoogleFonts.poppins(
-                              fontSize: 15,
-                              color:Colors.white,
-                            ),
-
-                          ),
-                        ),
-                      ),
-                    ],
+                  ChatBubble(
+                    message: 'I am fine',
+                    sender: true,
                   ),
-
-                  ChatBubble(),
-                  ChatBubble(),
-
-
-
+                  ChatBubble(
+                    message: 'What are you upto these days? Its snowing outside.',
+                    sender: true,
+                  ),
 
 
                 ],
@@ -86,8 +52,14 @@ class _ChatScreenState extends State<ChatScreen> {
 }
 
 class ChatBubble extends StatelessWidget {
+
+  final message;
+  final bool sender;
+
   const ChatBubble({
     super.key,
+    required this.message,
+    required this.sender,
   });
 
   @override
@@ -96,20 +68,21 @@ class ChatBubble extends StatelessWidget {
       children: [
         SizedBox(height: 20,),
         Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment:sender==true? MainAxisAlignment.end :MainAxisAlignment.start,
           children: [
             Flexible(
               child: Container(
 
                 padding: EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Color(0xfff0f2f3),
+                  color:sender==true?Color(0xfff3375d4) :Color(0xfff0f2f3),
                   borderRadius: BorderRadius.circular(12)
                 ),
                 child: Text(
-                  'Good Morning,',
+                  '${message}',
                   style: GoogleFonts.poppins(
                     fontSize: 15,
+                    color: sender==true?Colors.white:Colors.black
                   ),
                 ),
               ),
