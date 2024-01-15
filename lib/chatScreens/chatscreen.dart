@@ -11,6 +11,8 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
 
+  TextEditingController input = TextEditingController();
+
   List<String> messages = [
     'Hello How are you',
     'I am fine what about you',
@@ -70,6 +72,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
                       child: Center(
                         child: TextFormField(
+                          controller: input,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(50),
