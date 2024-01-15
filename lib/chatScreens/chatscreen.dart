@@ -10,6 +10,25 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+
+  List<String> messages = [
+    'Hello How are you',
+    'I am fine what about you',
+    'How is the weather today?',
+    'Its really cold and visibility is very less',
+    'Stay home and be safe !!. ',
+    'You too !! Bye take care.',
+  ];
+
+  List<bool> isSender = [
+    true,
+    false,
+    true,
+    false,
+    true,
+    false,
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,41 +42,18 @@ class _ChatScreenState extends State<ChatScreen> {
               child: Column(
                 children: [
 
-                  ChatBubble(
-                    message: 'Hello Corvit',
-                    sender: true,
-                  ),
-                  ChatBubble(
-                    message: 'How are you ?',
-                    sender: false,
-                  ),
-                  ChatBubble(
-                    message: 'I am fine',
-                    sender: true,
-                  ),
-                  ChatBubble(
-                    message: 'What are you upto these days? Its snowing outside.',
-                    sender: true,
-                  ),
-
-                  InkWell(
-                    onTap: (){
-                      
-                    },
-                    child: Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: Colors.green.shade400,
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      child: Icon(
-                        Icons.send,
-                        color: Colors.white,
-                      ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height*0.8,
+                    child: ListView.builder(
+                      itemCount: messages.length,
+                      itemBuilder: (context,index){
+                        return ChatBubble(
+                            message: messages[index],
+                            sender: isSender[index],
+                        );
+                      },
                     ),
                   ),
-
 
                 ],
               ),
