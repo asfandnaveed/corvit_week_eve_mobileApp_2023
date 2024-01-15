@@ -33,32 +33,72 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: Column(
-                children: [
+      body: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          children: [
 
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height*0.8,
-                    child: ListView.builder(
-                      itemCount: messages.length,
-                      itemBuilder: (context,index){
-                        return ChatBubble(
-                            message: messages[index],
-                            sender: isSender[index],
-                        );
-                      },
+            SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height*0.7,
+                  child: ListView.builder(
+                    itemCount: messages.length,
+                    itemBuilder: (context,index){
+                      return ChatBubble(
+                          message: messages[index],
+                          sender: isSender[index],
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ),
+
+            Container(
+              height: MediaQuery.of(context).size.height*0.17,
+              decoration: BoxDecoration(
+                  color: Colors.green.withOpacity(0.1)
+              ),
+              child: Row(
+                children: [
+                  Container(
+                      width: MediaQuery.of(context).size.width*0.85,
+                      height: 80,
+                      padding: EdgeInsets.all(10),
+
+                      child: Center(
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50),
+                              borderSide: BorderSide(
+                                color: Color(0xfff3375d4),
+                              ),
+                              gapPadding: 0
+                            )
+                          ),
+                        ),
+                      )
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width*0.12,
+                    height: MediaQuery.of(context).size.width*0.12,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: Colors.green.shade400,
+                    ),
+                    child: Icon(
+                      Icons.send,
+                      color: Colors.white,
                     ),
                   ),
-
                 ],
               ),
             ),
-          ),
+
+          ],
         ),
       ),
     );
