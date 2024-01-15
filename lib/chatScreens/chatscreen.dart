@@ -85,16 +85,26 @@ class _ChatScreenState extends State<ChatScreen> {
                         ),
                       )
                   ),
-                  Container(
-                    width: MediaQuery.of(context).size.width*0.12,
-                    height: MediaQuery.of(context).size.width*0.12,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: Colors.green.shade400,
-                    ),
-                    child: Icon(
-                      Icons.send,
-                      color: Colors.white,
+                  InkWell(
+                    onTap: (){
+                      messages.add(input.text);
+                      isSender.add(true);
+                      input.text='';
+                      setState(() {
+
+                      });
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width*0.12,
+                      height: MediaQuery.of(context).size.width*0.12,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: Colors.green.shade400,
+                      ),
+                      child: Icon(
+                        Icons.send,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ],
