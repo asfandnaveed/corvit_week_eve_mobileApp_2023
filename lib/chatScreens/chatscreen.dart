@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -34,7 +36,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      resizeToAvoidBottomInset: false,
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Column(
@@ -89,7 +91,19 @@ class _ChatScreenState extends State<ChatScreen> {
                     onTap: (){
                       messages.add(input.text);
                       isSender.add(true);
+
+
+                      final auth = FirebaseAuth.instance;
+                      final db = FirebaseDatabase.instance.ref();
+
+                      db.child('Messages').child(auth.currentUser!.uid).push().set({
+                        "message":input.text,
+                        "isSender": true,
+                        "time": '${DateTime.now()}',
+                      });
+
                       input.text='';
+
                       setState(() {
 
                       });

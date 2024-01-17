@@ -59,6 +59,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         password: password.text
                     );
 
+                    if(auth.currentUser!=null){
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context)=> ChatScreen())
+                      );
+                    }
+
+
                   },
                   child: Text(
                     'Sign Up',
@@ -68,45 +75,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
               ),
 
-              ElevatedButton(
-                  onPressed: (){
-                    final db = FirebaseDatabase.instance.ref();
 
-                    db.child('Students').child('Ahmed').set({
-                      "rollNumber":"LH_SH_523",
-                      "Address":"Kalma Chonck",
-                      "id":"3",
-                      "FatherName":"Hammad",
-                    });
-                  },
-                  child: Text('CREATE DATA !')
-              ),
-              SizedBox(height: 20,),
-              ElevatedButton(
-                  onPressed: (){
-                    check==false? check=true : check=false;
-                   setState(() {
 
-                   });
-
-                  },
-                  child: Text('Change Color'),
-              ),
-              Text(
-                'Hello Corvit',
-                style: GoogleFonts.poppins(
-                  color: check==false?Colors.green:Colors.red,
-                ),
-              ),
-
-              ElevatedButton(
-                  onPressed: (){
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context)=> ChatScreen())
-                    );
-                  },
-                  child: Text('Next Screen ')
-              ),
             ],
           ),
         ),
