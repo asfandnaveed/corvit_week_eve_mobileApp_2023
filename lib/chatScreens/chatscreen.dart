@@ -60,69 +60,91 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             ),
 
-            Container(
-              height: MediaQuery.of(context).size.height*0.17,
-              decoration: BoxDecoration(
-                  color: Colors.green.withOpacity(0.1)
-              ),
-              child: Row(
-                children: [
-                  Container(
-                      width: MediaQuery.of(context).size.width*0.85,
-                      height: 80,
-                      padding: EdgeInsets.all(10),
+            Column(
+              children: [
+                ElevatedButton(
+                    onPressed: (){
+                      
+                      final db  = FirebaseDatabase.instance.ref();
+                      
+                      db.child('Messages').get().then((value){
 
-                      child: Center(
-                        child: TextFormField(
-                          controller: input,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(50),
-                              borderSide: BorderSide(
-                                color: Color(0xfff3375d4),
+                        for(var item in value.children){
+
+                          debugPrint('DATA: ${item.value}');
+
+                        }
+
+                      });
+                      
+                    },
+                    child: Text('Get Data')
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height*0.17,
+                  decoration: BoxDecoration(
+                      color: Colors.green.withOpacity(0.1)
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                          width: MediaQuery.of(context).size.width*0.85,
+                          height: 80,
+                          padding: EdgeInsets.all(10),
+
+                          child: Center(
+                            child: TextFormField(
+                              controller: input,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(50),
+                                  borderSide: BorderSide(
+                                    color: Color(0xfff3375d4),
+                                  ),
+                                  gapPadding: 0
+                                )
                               ),
-                              gapPadding: 0
-                            )
+                            ),
+                          )
+                      ),
+                      InkWell(
+                        onTap: (){
+                          messages.add(input.text);
+                          isSender.add(true);
+
+
+                          final auth = FirebaseAuth.instance;
+                          final db = FirebaseDatabase.instance.ref();
+
+                          db.child('Messages').child(auth.currentUser!.uid).push().set({
+                            "message":input.text,
+                            "isSender": true,
+                            "time": '${DateTime.now()}',
+                          });
+
+                          input.text='';
+
+                          setState(() {
+
+                          });
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width*0.12,
+                          height: MediaQuery.of(context).size.width*0.12,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Colors.green.shade400,
+                          ),
+                          child: Icon(
+                            Icons.send,
+                            color: Colors.white,
                           ),
                         ),
-                      )
-                  ),
-                  InkWell(
-                    onTap: (){
-                      messages.add(input.text);
-                      isSender.add(true);
-
-
-                      final auth = FirebaseAuth.instance;
-                      final db = FirebaseDatabase.instance.ref();
-
-                      db.child('Messages').child(auth.currentUser!.uid).push().set({
-                        "message":input.text,
-                        "isSender": true,
-                        "time": '${DateTime.now()}',
-                      });
-
-                      input.text='';
-
-                      setState(() {
-
-                      });
-                    },
-                    child: Container(
-                      width: MediaQuery.of(context).size.width*0.12,
-                      height: MediaQuery.of(context).size.width*0.12,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Colors.green.shade400,
                       ),
-                      child: Icon(
-                        Icons.send,
-                        color: Colors.white,
-                      ),
-                    ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
 
           ],
