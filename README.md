@@ -27,3 +27,10 @@ ______________________________________________
 # ChatScreen Design
 
 Design : https://dribbble.com/shots/23295486-Chat-UI-design-medical-app
+______________________________________________
+
+Design 2: https://dribbble.com/shots/15327335-Chat-Room-App-UI
+______________________________________________
+
+
+https://docs.google.com/forms/d/e/1FAIpQLSdNibaBCaQVojCpIPuEpxn_dR7jPOEC4QZyBc9iT4292OwgrA/viewform?usp=sf_link
