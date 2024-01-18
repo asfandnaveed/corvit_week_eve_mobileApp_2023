@@ -1,4 +1,5 @@
 import 'package:corvit_week_eve/chatScreens/chatscreen.dart';
+import 'package:corvit_week_eve/chatScreens/chatuserScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -61,7 +62,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                     if(auth.currentUser!=null){
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context)=> ChatScreen())
+                          MaterialPageRoute(builder: (context)=> ChatUsers())
                       );
                     }
 
