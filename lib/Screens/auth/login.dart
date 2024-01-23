@@ -14,44 +14,47 @@ class _loginScreenState extends State<loginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            Text(
-              'Login Screen',
-              style: GoogleFonts.poppins(
-                fontWeight: FontWeight.w500,
-                fontSize: 25
-              ),
-            ),
-            SizedBox(height: 30,),
-            TextFormField(),
-            SizedBox(height: 20,),
-            TextFormField(
-              obscureText: true,
-            ),
-            SizedBox(height: 30,),
-            ElevatedButton(
-                onPressed: (){},
-                child: Text('Sign In'),
-            ),
-            SizedBox(height: 30,),
-
-            InkWell(
-              onTap: (){
-                Navigator.push(context,
-                  MaterialPageRoute(builder: (context)=>RegisterScreen()),
-                );
-              },
-                child: Text(
-                  'Register',
-                  style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20,
-                    color: Colors.blue
-                  ),
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            children: [
+              Text(
+                'Login Screen',
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 25
                 ),
-            ),
-          ],
+              ),
+              SizedBox(height: 30,),
+              TextFormField(),
+              SizedBox(height: 20,),
+              TextFormField(
+                obscureText: true,
+              ),
+              SizedBox(height: 30,),
+              ElevatedButton(
+                  onPressed: (){},
+                  child: Text('Sign In'),
+              ),
+              SizedBox(height: 30,),
+
+              InkWell(
+                onTap: (){
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context)=>RegisterScreen()),
+                  );
+                },
+                  child: Text(
+                    'Register',
+                    style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 20,
+                      color: Colors.blue
+                    ),
+                  ),
+              ),
+            ],
+          ),
         ),
       ),
     );
