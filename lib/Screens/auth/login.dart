@@ -1,6 +1,9 @@
 import 'package:duplicate/Screens/auth/register.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../home/homepage.dart';
 
 class loginScreen extends StatefulWidget {
   const loginScreen({super.key});
@@ -10,6 +13,14 @@ class loginScreen extends StatefulWidget {
 }
 
 class _loginScreenState extends State<loginScreen> {
+
+  TextEditingController inputEmail = TextEditingController();
+  TextEditingController inputPassword = TextEditingController();
+
+  final auth = FirebaseAuth.instance;
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,14 +37,30 @@ class _loginScreenState extends State<loginScreen> {
                 ),
               ),
               SizedBox(height: 30,),
-              TextFormField(),
+              TextFormField(
+                controller: inputEmail,
+              ),
               SizedBox(height: 20,),
               TextFormField(
+                controller: inputPassword,
                 obscureText: true,
               ),
               SizedBox(height: 30,),
               ElevatedButton(
-                  onPressed: (){},
+                  onPressed: (){
+
+                    auth.signInWithEmailAndPassword(
+                        email: inputEmail.text,
+                        password: inputPassword.text
+                    );
+
+                    if(auth.currentUser !=null){
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context)=>HomePage())
+                      );
+                    }
+
+                  },
                   child: Text('Sign In'),
               ),
               SizedBox(height: 30,),
