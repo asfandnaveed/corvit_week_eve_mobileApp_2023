@@ -77,7 +77,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                   });
 
-                 
+
 
                 },
                 child: Text('Sign Up'),

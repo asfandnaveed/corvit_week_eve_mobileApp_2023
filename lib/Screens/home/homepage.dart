@@ -1,3 +1,5 @@
+import 'package:duplicate/Screens/auth/login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -27,7 +29,16 @@ class _HomePageState extends State<HomePage> {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  Icon(Icons.logout),
+                  IconButton(
+                      onPressed: (){
+                        FirebaseAuth.instance.signOut().then((value) => {
+                          Navigator.push(context,
+                            MaterialPageRoute(builder: (context)=>loginScreen())
+                          )
+                        });
+                      },
+                      icon: Icon(Icons.logout),
+                  ),
                 ],
               ),
               SizedBox(

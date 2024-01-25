@@ -1,6 +1,7 @@
 import 'package:duplicate/Screens/auth/register.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../home/homepage.dart';
@@ -67,9 +68,14 @@ class _loginScreenState extends State<loginScreen> {
 
               InkWell(
                 onTap: (){
-                  Navigator.push(context,
-                    MaterialPageRoute(builder: (context)=>RegisterScreen()),
+                  // Navigator.push(context,
+                  //   MaterialPageRoute(builder: (context)=>RegisterScreen()),
+                  // );
+
+                  Get.to(RegisterScreen(),
+                      transition: Transition.zoom
                   );
+
                 },
                   child: Text(
                     'Register',
@@ -79,6 +85,22 @@ class _loginScreenState extends State<loginScreen> {
                       color: Colors.blue
                     ),
                   ),
+              ),
+
+              ElevatedButton(
+                  onPressed: (){
+                    Get.snackbar(
+                      'Corvit',
+                      'Hello How are you?',
+                    );
+                  },
+                  child: Text('Show Snackbar')
+              ),
+              ElevatedButton(
+                  onPressed: (){
+                    Get.changeTheme(ThemeData.dark());
+                  },
+                  child: Text('Change theme')
               ),
             ],
           ),
