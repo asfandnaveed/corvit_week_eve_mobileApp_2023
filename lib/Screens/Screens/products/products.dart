@@ -1,4 +1,5 @@
 import 'package:duplicate/api/ApiInterface.dart';
+import 'package:duplicate/models/productModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
@@ -13,6 +14,25 @@ class Products extends StatefulWidget {
 }
 
 class _ProductsState extends State<Products> {
+
+
+  Rx<ProductModel> productModel = ProductModel().obs;
+
+  getData() async {
+
+    var json = await ApiInterface().getProductsData();
+    productModel.value = ProductModel.fromJson(json);
+
+
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    getData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,8 +52,8 @@ class _ProductsState extends State<Products> {
                 ),
                 SizedBox(
                   height: Get.height*0.8,
-                  child: ListView.builder(
-                    itemCount: 8,
+                  child: Obx(() => ListView.builder(
+                    itemCount: productModel.value.products!.length,
                     itemBuilder: (context,index){
                       return Column(
                         children: [
@@ -46,7 +66,7 @@ class _ProductsState extends State<Products> {
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(15),
                                 child: Image.network(
-                                  'https://images.unsplash.com/photo-1598214886806-c87b84b7078b?q=80&w=2825&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                                  'https://asfandnaveed.com/projects/corvit/${productModel.value.products![index].pImage}',
                                   width: 140,
                                   height: 140,
                                   fit: BoxFit.cover,
@@ -108,7 +128,7 @@ class _ProductsState extends State<Products> {
                                       Padding(
                                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                                         child: Text(
-                                          'Pan Cackes',
+                                          '${productModel.value.products![index].pName}',
                                           style: GoogleFonts.poppins(
                                               fontWeight: FontWeight.w600,
                                               fontSize: 17
@@ -119,7 +139,7 @@ class _ProductsState extends State<Products> {
                                       Padding(
                                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                                         child: Text(
-                                          '350 Rs',
+                                          '${productModel.value.products![index].pPrice}',
                                           style: GoogleFonts.poppins(
                                               fontWeight: FontWeight.w500,
                                               fontSize: 16
@@ -159,7 +179,7 @@ class _ProductsState extends State<Products> {
                         ],
                       );
                     },
-                  ),
+                  ))
                 ),
 
               ],

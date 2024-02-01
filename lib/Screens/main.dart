@@ -1,9 +1,11 @@
 import 'package:duplicate/Screens/auth/login.dart';
 import 'package:duplicate/Screens/home/homepage.dart';
+import 'package:duplicate/Screens/products/products.dart';
 import 'package:duplicate/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,7 +13,7 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform
   );
   runApp(
-    MaterialApp(
+    GetMaterialApp(
       home: SplashScreen(),
     ),
   );
@@ -22,11 +24,12 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if(FirebaseAuth.instance.currentUser!=null){
-      return HomePage();
-    }else{
-      return loginScreen();
-    }
+    // if(FirebaseAuth.instance.currentUser!=null){
+    //   return HomePage();
+    // }else{
+    //   return loginScreen();
+    // }
+    return Products();
   }
 }
 

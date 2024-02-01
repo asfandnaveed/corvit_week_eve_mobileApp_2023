@@ -1,6 +1,7 @@
 import 'package:duplicate/Screens/auth/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,6 +12,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  RxInt x = 0.obs;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,6 +72,16 @@ class _HomePageState extends State<HomePage> {
                     }
                 ),
               ),
+              SizedBox(height: 30,),
+              ElevatedButton(
+                  onPressed: (){
+                    x.value++;
+
+                  },
+                  child: Text('Add Value')
+              ),
+              Obx(() => Text('${x.value}'),),
+
             ],
           ),
         ),
